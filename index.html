@@ -7,6 +7,7 @@
     <title>Wordle</title>
     <link rel="stylesheet" href="style.css"></link>
     <script type="module" src="word_program.js"></script>
+    
     <script>
         function buildgrid(){
             console.log("called");
@@ -18,15 +19,56 @@
                 for(var j=0;j<5;j++){
                     const tile = document.createElement("div");
                     tile.classList.add("tile");
+                    tile.id="tile"+j;
                     document.getElementById("word"+i).appendChild(tile);
                 }
             }
         }
+
+        /*
+        const s = document.getElementById("word0");
+        console.log(s);
+        s.children[0].textContent = "sad";
+        */
+        
     </script>
 </head>
 <body onload="buildgrid()">
+    <h3 style="color: white; text-align: center;">Wordle</h3>
     <div id="playarea" class="container">
     </div>
-    <h3 style="color:aliceblue; float:right;"> By - Sanju Bodra</h3>
+    <div data-keyboard="" class="keyboard">
+        <button class="key" data-key="Q">Q</button>
+        <button class="key" data-key="W">W</button>
+        <button class="key" data-key="E">E</button>
+        <button class="key" data-key="R">R</button>
+        <button class="key" data-key="T">T</button>
+        <button class="key" data-key="Y">Y</button>
+        <button class="key" data-key="U">U</button>
+        <button class="key" data-key="I">I</button>
+        <button class="key" data-key="O">O</button>
+        <button class="key" data-key="P">P</button>
+        <div class="space"></div>
+        <button class="key" data-key="A">A</button>
+        <button class="key" data-key="S">S</button>
+        <button class="key" data-key="D">D</button>
+        <button class="key" data-key="F">F</button>
+        <button class="key" data-key="G">G</button>
+        <button class="key" data-key="H">H</button>
+        <button class="key" data-key="J">J</button>
+        <button class="key" data-key="K">K</button>
+        <button class="key" data-key="L">L</button>
+        <div class="space"></div>
+        <button data-enter="" class="key large">Enter</button>
+        <button class="key" data-key="Z">Z</button>
+        <button class="key" data-key="X">X</button>
+        <button class="key" data-key="C">C</button>
+        <button class="key" data-key="V">V</button>
+        <button class="key" data-key="B">B</button>
+        <button class="key" data-key="N">N</button>
+        <button class="key" data-key="M">M</button>
+        <button data-delete="" class="key large">Del</button>
+      </div>
+    <h3>By- Sanju Bodra</h3>
 </body>
 </html>
