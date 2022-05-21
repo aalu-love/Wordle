@@ -3,7 +3,6 @@ import {words as w} from './words.js';
 const len = w.length;
 const todayword = w[getRandomInt(0,len)];
 
-const res = [0,0,0,0,0];
 
 export function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -12,6 +11,7 @@ export function getRandomInt(min, max) {
 }
 
 export function wordcheck(word){
+    const res = [0,0,0,0,0];
     const name = word;
     console.log("Word:",todayword);
     for(var j=0;j<5;j++){
