@@ -1,0 +1,58 @@
+body
+{
+    background-color: black;
+}
+
+.container
+{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    gap: .25em;
+    margin-bottom: 1em;
+}
+
+.word{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(5, 4em);
+    grid-template-rows: repeat(1, 4em);
+    gap: .25em;
+}
+
+.tile
+{
+    font-size: 2em;
+    color: aliceblue;
+    border: .05em solid grey;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.tile[data-state="active"]
+{
+    border-color: aliceblue;
+}
+
+.tile[data-state="wrong"]
+{
+    border: none;
+    background-color: hsl(240, 2%, 23%);
+}
+
+.tile[data-state="wrong-position"]
+{
+    border: none;
+    background-color: hsl(49, 51%, 47%);
+}
+
+.tile[data-state="correct"]
+{
+    border: none;
+    background-color: hsl(115, 29%, 43%);
+}

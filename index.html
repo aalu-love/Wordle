@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle</title>
+    <link rel="stylesheet" href="style.css"></link>
+    <script type="module" src="word_program.js"></script>
+    <script>
+        function buildgrid(){
+            console.log("called");
+            for(var i=0;i<6;i++){
+                const word = document.createElement("div");
+                word.classList.add("word");
+                word.id = "word"+i;
+                document.getElementById("playarea").appendChild(word);
+                for(var j=0;j<5;j++){
+                    const tile = document.createElement("div");
+                    tile.classList.add("tile");
+                    document.getElementById("word"+i).appendChild(tile);
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="buildgrid()">
+    <div id="playarea" class="container">
+    </div>
+</body>
+</html>
