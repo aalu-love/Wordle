@@ -15,16 +15,12 @@ export function getRandomInt(min, max) {
 export function wordcheck(word){
     const res = [0,0,0,0,0];
     const name = word;
-    for(var j=0;j<5;j++){
-        for(var k=0;k<5;k++){
-            if(todayword.toLocaleUpperCase()[j] == name[k]){
-                //console.log("Present :",k,todayword[j]);
-                res[k] = 2;
-            }
+    for(var j=0,i=0;j<5,i<5;j++,i++){
+        if(todayword.toLocaleUpperCase().includes(name[i])){
+            //console.log("Present :",k,todayword[j]);
+            res[i] = 2;
         }
-    }
-    for(var i=0;i<5;i++){
-        if(todayword.toLocaleUpperCase()[i] == name[i]){
+        if(todayword.toLocaleUpperCase()[j] == name[i]){
             //console.log("Place:",todayword[i]);
             res[i] = 1;
         }

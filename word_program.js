@@ -7,15 +7,16 @@ var h = 0,hit = 0;
 var c = "";
 console.log(todayword);
 
+//Main Function
 document.onkeydown = async function(e){
     const d = document.getElementById("word"+hit);
+    console.log(d);
     
     var guessedWord = "";
 
     for(var i=0;i<5;i++){
         guessedWord = guessedWord + d.childNodes[i].innerHTML;
     }
-    console.log(guessedWord);
 
     if(guessedWord.length <= 5){
         if(e.key.match(/^[a-z]$/)){
@@ -33,7 +34,9 @@ document.onkeydown = async function(e){
             }
         }
         if(e.keyCode == 13){
-            check();
+            if(check()){
+                
+            }
         }
     }
 };
@@ -46,7 +49,8 @@ async function check(){
         c = c + wrd.childNodes[i].innerHTML;
     }
     const fill = wordcheck(c);
-    if(c.length >= 5){
+    keyboardlightup(c,fill);
+    if(c.length === 5){
         if(isIn(c)==true){
             for(var p=0;p<5;p++){
                 if(fill[p] == 1){
@@ -67,18 +71,14 @@ async function check(){
     }else{
         showAlert("Not enough letter.");
     }
-    for(var ch=0;ch<5;ch++){
-        if(fill[ch] == 1){
-            flag = 1;
-        }else{
-            flag = 0;
-        }
+    if(c.includes(todayword.toLocaleUpperCase())){
+        flag = 1;
     }
-    checkhits();
     if(flag == 1){
         showAlert("You Win.");
         hit = 6;
     }
+    checkhits();
     i=0;
 }
 function isIn(x){
@@ -144,7 +144,7 @@ function deleteKey() {
 }
 
 const alertContainer = document.querySelector("[data-alert-container]")
-function showAlert(message, duration = 1000) {
+function showAlert(message, duration = 1500) {
     const alert = document.createElement("div")
     alert.textContent = message
     alert.classList.add("alert")
@@ -157,4 +157,28 @@ function showAlert(message, duration = 1000) {
         alert.remove()
       })
     }, duration)
+}
+
+function keyboardlightup(word,ch){
+    var code = "";
+    for(var i=0;i<5;i++){
+        if(ch[i] == 0){
+            code = word[i];
+            setAtt(code,"wrong");
+        }
+        if(ch[i] == 1){
+            code = word[i];
+            setAtt(code,"correct");
+        }
+        if(ch[i] == 2){
+            code = word[i];
+            setAtt(code,"wrong-position");
+        }
+    }
+}
+
+function setAtt(code,state){
+    var keycode = document.querySelectorAll(`[data-key='${code}']`)[0];
+    //console.log(code);
+    keycode.setAttribute("data-state",`${state}`);
 }

@@ -1,6 +1,7 @@
 body
 {
     background-color: black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container
@@ -32,6 +33,7 @@ body
     justify-content: center;
     align-items: center;
     user-select: none;
+    border-radius: 3px;
 }
 
 .tile[data-state="active"]
@@ -91,6 +93,17 @@ body
   cursor: pointer;
   user-select: none;
 }
+.key[data-state="correct"]{
+  background-color: hsl(115, 29%, 43%);
+}
+.key[data-state="wrong"]{
+  background-color: hsl(240, 2%, 23%);
+}
+.key[data-state="wrong-position"]{
+  background-color: hsl(49, 51%, 47%);
+}
+
+
 .alert-container {
     position: fixed;
     top: 10vh;
