@@ -5,12 +5,11 @@ import {dictionary as dic} from './words.js';
 
 var h = 0,hit = 0;
 var c = "";
-console.log(todayword);
+//console.log(todayword);
 
 //Main Function
 document.onkeydown = async function(e){
     const d = document.getElementById("word"+hit);
-    console.log(d);
     
     var guessedWord = "";
 
@@ -41,6 +40,7 @@ document.onkeydown = async function(e){
     }
 };
 
+//Check on Hit function
 async function check(){
     var flag = 0;
     const wrd = document.getElementById("word"+hit);
@@ -49,9 +49,9 @@ async function check(){
         c = c + wrd.childNodes[i].innerHTML;
     }
     const fill = wordcheck(c);
-    keyboardlightup(c,fill);
     if(c.length === 5){
         if(isIn(c)==true){
+            keyboardlightup(c,fill);
             for(var p=0;p<5;p++){
                 if(fill[p] == 1){
                     wrd.children[p].setAttribute("data-state","correct");
@@ -90,7 +90,7 @@ function isIn(x){
 
 function checkhits(){
     if(hit == 6){
-        showAlert("Today's word: "+todayword);
+        showAlert("Today's word: "+todayword.toLocaleUpperCase());
     }
     return;
 }
